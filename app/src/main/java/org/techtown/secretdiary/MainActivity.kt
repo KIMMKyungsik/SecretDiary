@@ -1,6 +1,7 @@
 package org.techtown.secretdiary
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -64,6 +65,9 @@ class MainActivity : AppCompatActivity() {
         numberPicker1
         numberPicker2
         numberPicker3
+
+
+
         openButton.setOnClickListener {
             if (changePasswordMode) {
                 Toast.makeText(this, "비밀번호가 변경 중입니다.", Toast.LENGTH_SHORT).show()
@@ -79,10 +83,10 @@ class MainActivity : AppCompatActivity() {
 
             if (passwordPreferences.getString("password", "000").equals(passwordFromUser)) {
 
-                // TODO 다이어리 페이지 작성후에 넘겨주어야 함
-
-
+                startActivity(Intent(this,DiaryActivity::class.java))
             } // 패스워드 성공
+
+
             else {
                showErrorAlertDialog()
                 //실패
@@ -120,12 +124,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 //changePasswordMode 활성화 :: 비밀번호가 맞는지 체크
             }
-
-
         }
-
-
-
     }
     private fun showErrorAlertDialog (){
 
